@@ -1,0 +1,8 @@
+*.csv
+venv*
+data/
+dataset/
+plots/
+__pycache__/
+training_plots/
+archive*
