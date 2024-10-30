@@ -153,7 +153,7 @@ def main():
         ],
         ["k"],
         nr_dividers=1,
-        repeats=1,
+        repeats=2,
         nr_sparsifiers=1,
     )
 
