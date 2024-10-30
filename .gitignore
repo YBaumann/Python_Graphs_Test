@@ -5,4 +5,5 @@ dataset/
 plots/
 __pycache__/
 training_plots/
+tmp/
 archive*
