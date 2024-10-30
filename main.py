@@ -128,11 +128,11 @@ def main():
     datasets2 = [
         # Amazon(root="dataset/", name="Photo"),  # n = 7650, e = 119081
         Planetoid(root="dataset/", name="Cora"),  # n = 2708, e = 10556
-        Amazon(root="dataset/", name="Computers"),  # n = 13752, e = 245778
-        Planetoid(root="dataset/", name="Pubmed"),  # n = 19717 e = 88651
-        Coauthor(root="dataset/", name="CS"),  # n = 18333, e = 81894
-        Coauthor(root="dataset/", name="Physics"),  # n = 34493, e = 247962
-        Planetoid(root="dataset/", name="CiteSeer"),  # n = 3327, e = 9104
+        # Amazon(root="dataset/", name="Computers"),  # n = 13752, e = 245778
+        # Planetoid(root="dataset/", name="Pubmed"),  # n = 19717 e = 88651
+        # Coauthor(root="dataset/", name="CS"),  # n = 18333, e = 81894
+        # Coauthor(root="dataset/", name="Physics"),  # n = 34493, e = 247962
+        # Planetoid(root="dataset/", name="CiteSeer"),  # n = 3327, e = 9104
         # PygNodePropPredDataset(name="ogbn-arxiv"),
         # AttributedGraphDataset(root="dataset/", name="BlogCatalog"),
         ### CitationFull(root="dataset/", name="Cora"),
@@ -151,9 +151,9 @@ def main():
             "tree",
             "random",
         ],
-        ["1", "k"],
-        nr_dividers=10,
-        repeats=10,
+        ["k"],
+        nr_dividers=1,
+        repeats=1,
         nr_sparsifiers=1,
     )
 
