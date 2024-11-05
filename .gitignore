@@ -1,4 +1,5 @@
 *.csv
+*.log
 venv*
 data/
 dataset/
@@ -6,4 +7,5 @@ plots/
 __pycache__/
 training_plots/
 tmp/
+runs/
 archive*
