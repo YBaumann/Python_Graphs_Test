@@ -1,0 +1,12 @@
+Full Data(x=[18333, 6805], edge_index=[2, 163788], y=[18333])
+edges to add [50113]
+total edges 81894
+New Sparsifier
+MPS backend not available. Using CPU.
+Epoch: 0, Loss: 2.6891558170318604
+Epoch: 50, Loss: 0.165647491812706
+Test Accuracy: 0.9279272727272727
+Execution time of 'train_GCN_multisparse': 32.204000 seconds
+Results saved to output_csv/CS_sparsifiers_results.csv
+lts.csv
+ saved to output_csv/Pubmed_sparsifiers_results.csv

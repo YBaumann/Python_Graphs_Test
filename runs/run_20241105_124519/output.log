@@ -1,0 +1,10 @@
+Full Data(x=[2708, 1433], edge_index=[2, 10556], y=[2708], train_mask=[2708], val_mask=[2708], test_mask=[2708])
+edges to add [3992]
+total edges 5278
+New Sparsifier
+MPS backend not available. Using CPU.
+Epoch: 0, Loss: 1.9506642818450928
+Epoch: 50, Loss: 0.10248779505491257
+Test Accuracy: 0.843426883308715
+Execution time of 'train_GCN_multisparse': 1.447737 seconds
+Results saved to output_csv/Cora_sparsifiers_results.csv
