@@ -21,4 +21,8 @@ To set up and run the code, ensure you have the following installed:
    ```bash
     pip install -r requirements.txt
    ```
+3. Create a new folder:
+   ```bash
+    mkdir output_csv/
+   ```
    
