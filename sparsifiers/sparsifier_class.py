@@ -50,8 +50,18 @@ class TreeSparsifier:
                 return nx.dfs_edges
             case "bfs":
                 return nx.bfs_edges
+            case "random_spanning_tree":
+                return lambda graph, root: nx.random_spanning_tree(graph, weight=None).edges()
+            case "pseudo_random_spanning_tree":
+                return self._compute_psuedo_random_spanning_tree
             case _:
                 return None
+            
+    def _compute_psuedo_random_spanning_tree(self, graph, root):
+        # Assign each edge weight a random weight and compute mst
+        for u, v in graph.edges():
+            graph[u][v]["weight"] = random.random()
+        return nx.minimum_spanning_tree(graph, weight="weight").edges()
 
     def _get_random_sampler(self, random_sampler_name: str):
         match random_sampler_name:
