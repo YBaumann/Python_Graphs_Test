@@ -1,6 +1,8 @@
 # Graph Neural Network Sparsification
 
-This repository contains the code supporting the research presented in the paper. In this work, we explore methods to sparsify graph-based datasets for efficient training and inference in graph neural networks (GNNs) without compromising performance. We propose an improved algorithm for finding graph lottery tickets that yield competitive results with fewer edges.
+This repository contains the code supporting the research presented in the report. 
+
+In this work, we explore methods to sparsify graph-based datasets for efficient training and inference in graph neural networks (GNNs) without compromising performance. We propose an improved algorithm for finding graph lottery tickets that yield competitive results with fewer edges.
 
 ## Getting Started
 
