@@ -35,16 +35,17 @@ def train_GCN_multisparse(
     train_acc_history = []
     val_acc_history = []
 
+    # Define train/test masks
+    num_nodes = sparse_graphs[0].x.size(0)
+    indices = torch.randperm(num_nodes)
+    train_size = int(train_split * num_nodes)
+    train_indices = indices[:train_size]
+    test_indices = indices[train_size:]
+
+
     for graph in sparse_graphs:
         # Move graph data to the device
         graph = graph.to(device)
-
-        # Define train/test masks
-        num_nodes = graph.x.size(0)
-        indices = torch.randperm(num_nodes)
-        train_size = int(train_split * num_nodes)
-        train_indices = indices[:train_size]
-        test_indices = indices[train_size:]
 
         train_mask = torch.zeros(num_nodes, dtype=torch.bool, device=device)
         test_mask = torch.zeros(num_nodes, dtype=torch.bool, device=device)

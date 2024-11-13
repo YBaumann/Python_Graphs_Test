@@ -2,7 +2,7 @@ import networkx as nx
 import random
 from collections import defaultdict
 import numpy as np
-
+import math
 
 class TreeSparsifier:
     graph = None
@@ -54,6 +54,8 @@ class TreeSparsifier:
                 return lambda graph, root: nx.random_spanning_tree(graph, weight=None).edges()
             case "pseudo_random_spanning_tree":
                 return self._compute_psuedo_random_spanning_tree
+            case "low_degree_spanning_tree":
+                return self._compute_low_degree_spanning_tree
             case _:
                 return None
             
@@ -62,6 +64,45 @@ class TreeSparsifier:
         for u, v in graph.edges():
             graph[u][v]["weight"] = random.random()
         return nx.minimum_spanning_tree(graph, weight="weight").edges()
+
+    def _compute_low_degree_spanning_tree(self, graph, root):
+        # Calculate threshold based on graph size
+        restart_threshold = max(40, int(math.sqrt(graph.number_of_nodes())))
+        visited = set()
+        edges = []
+        n = graph.number_of_nodes()
+        nr_children = defaultdict(int) #np.zeros(n)
+        corresponding_tree = defaultdict(int) #np.zeros(n)
+        n = graph.number_of_nodes()
+        nr_tree = 0
+        for i in np.random.permutation(graph.nodes()):
+            if nr_children[i] == 0:
+                nr_tree += 1
+                stack = [(i, i)]
+                already_connected = False
+
+                while stack:
+                    node, parent = stack.pop()
+                    if node not in visited and nr_children[node] < restart_threshold:
+                        visited.add(node)
+                        corresponding_tree[node] = nr_tree
+                        if node != parent:
+                            edges.append((parent, node))
+                            nr_children[parent] += 1
+                        neighbors = list(graph.neighbors(node))
+
+                        for neighbor in neighbors:
+                            if neighbor not in visited:
+                                stack.append((neighbor, node))
+                            elif (
+                                not already_connected
+                                and corresponding_tree[neighbor] < nr_tree
+                            ):
+                                already_connected = True
+                                edges.append((parent, neighbor))
+
+        return edges
+
 
     def _get_random_sampler(self, random_sampler_name: str):
         match random_sampler_name:
