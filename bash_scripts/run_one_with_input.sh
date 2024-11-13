@@ -27,4 +27,4 @@ RUN_DIR="runs/run_$TIMESTAMP"
 mkdir -p "$RUN_DIR/output_csv"
 
 # Run the main program, passing in all arguments
-yes y | python3 main_separate_jobs.py "$DATASET_NAME" "$NR_DIVIDERS" "$NR_REPEATS" "$NR_SPARSIFIER" "$NR_EPOCHS" "$TREE_FUNCTION_NAMES" "$SAMPLER_NAMES" "$ONE_OR_K" > "$RUN_DIR/output.log" 2> "$RUN_DIR/error.log"
+yes y | python3 main.py "$DATASET_NAME" "$NR_DIVIDERS" "$NR_REPEATS" "$NR_SPARSIFIER" "$NR_EPOCHS" "$TREE_FUNCTION_NAMES" "$SAMPLER_NAMES" "$ONE_OR_K" > "$RUN_DIR/output.log" 2> "$RUN_DIR/error.log"
