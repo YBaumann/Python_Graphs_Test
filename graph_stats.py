@@ -34,6 +34,11 @@ def compute_graph_statistics(graph):
     
     # 90th percentile degree
     percentile_90_degree = np.percentile(degrees, 90)
+
+    percentile_95_degree = np.percentile(degrees, 95)
+    
+    percentile_99_degree = np.percentile(degrees, 99)
+    percentile_999_degree = np.percentile(degrees, 99.9)
     
     # Node with the highest degree
     highest_degree_node = max(graph.degree(), key=lambda x: x[1])[0]
@@ -63,6 +68,9 @@ def compute_graph_statistics(graph):
         "avg_degree": avg_degree,
         "std_degree": std_degree,
         "90th_percentile_degree": percentile_90_degree,
+        "95th_percentile_degree": percentile_95_degree,
+        "99th_percentile_degree": percentile_99_degree,
+        "99.9th_percentile_degree": percentile_999_degree,
         "highest_degree_node": highest_degree_node,
         "avg_clustering_coeff": avg_clustering_coeff,
         # "diameter": diameter,  # Potentially slow
@@ -82,7 +90,7 @@ datasets = [
         Coauthor(root="dataset/", name="CS"),
         Coauthor(root="dataset/", name="Physics"),
         Planetoid(root="dataset/", name="CiteSeer"),
-        # #PygNodePropPredDataset(name="ogbn-arxiv"),
+        #PygNodePropPredDataset(name="ogbn-arxiv"),
         AttributedGraphDataset(root="dataset/", name="BlogCatalog"),
     ]
 

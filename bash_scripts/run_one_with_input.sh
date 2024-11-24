@@ -1,5 +1,5 @@
 #!/bin/bash
-#SBATCH --job-name=${1}                          # Use dataset name as the job name
+#SBATCH --job-name=arxiv4                          # Use dataset name as the job name
 #SBATCH --output=slurm_output_%x_%j.log          # Output log file (job name and job ID)
 #SBATCH --error=slurm_error_%x_%j.log            # Error log file (job name and job ID)
 #SBATCH --time=96:00:00                          # Time limit hrs:min:sec

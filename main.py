@@ -20,8 +20,7 @@ from sparsifiers.sparsifier_class import TreeSparsifier
 
 
 from trainer.GCN import GCN
-from trainer.GeometricMedianGCN import GeometricMedianGCN
-from trainer.simple_train import train_GCN_multisparse
+from trainer.simple_train import train_GCN_multisparse, train_GCN_multisparse_ensemble, train_GCN_multisparse_ensemble_fine_grained
 import os
 
 from torch_geometric.datasets import KarateClub
@@ -103,7 +102,7 @@ def train_on_multiple_sparsifiers_refactor_to_csv(
 
                                 # Train on GCN with the sparse graphs
                             start_time = time.time()  # Start timing
-                            train_acc, val_acc = train_GCN_multisparse(
+                            train_acc, val_acc, ensemble_accuracy = train_GCN_multisparse_ensemble(
                                 sparse_graphs,
                                 dataset.num_features,
                                 dataset.num_classes,
@@ -138,11 +137,12 @@ def train_on_multiple_sparsifiers_refactor_to_csv(
                                     "time_taken_training": elapsed_time,
                                     "nr_sparsifiers": nr_sparsifiers,
                                     "sparsification_time": sparsification_time,
+                                    "ensemble_accuracy": ensemble_accuracy,
                                 }
                             )
 
         # Save all individual results to CSV
-        csv_file_path = f"{output_dir}/{dataset.name}_sparsifiers_results.csv"
+        csv_file_path = f"{output_dir}/{dataset.name}_sparsifiers_results_for_plot.csv"
         with open(csv_file_path, mode="w", newline="") as file:
             writer = csv.DictWriter(file, fieldnames=results[0].keys())
             writer.writeheader()
